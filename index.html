@@ -1,2 +1,86 @@
-<h1>My Portfolio</h1>
-<p>This is my first GitHub website!</p>
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mashit – Product Price Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      padding: 20px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    textarea, input, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      background: #111827;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #000;
+    }
+    .result {
+      margin-top: 20px;
+      background: #f0fdf4;
+      padding: 15px;
+      border-radius: 6px;
+    }
+    .warning {
+      background: #fee2e2;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>  <div class="container">
+    <h1>Mashit – Product Price Calculator</h1><label>Enter product prices (USD) – one per line:</label>
+<textarea id="prices" rows="5" placeholder="10\n15\n20"></textarea>
+
+<label>Cost per product (USD):</label>
+<input type="number" id="cost" placeholder="5" />
+
+<label>Total delivery charges (USD):</label>
+<input type="number" id="delivery" placeholder="10" />
+
+<button onclick="calculate()">Calculate</button>
+
+<div id="output" class="result" style="display:none;"></div>
+
+  </div>  <script>
+    function calculate() {
+      const priceLines = document.getElementById('prices').value.trim().split('\n');
+      const costPerProduct = parseFloat(document.getElementById('cost').value);
+      const deliveryCharges = parseFloat(document.getElementById('delivery').value);
+
+      if (!priceLines[0] || isNaN(costPerProduct) || isNaN(deliveryCharges)) {
+        alert('Please fill all fields correctly');
+        return;
+      }
+
+      const prices = priceLines.map(p => parseFloat(p)).filter(p => !isNaN(p));
+      const totalProducts = prices.length;
+      const totalSales = prices.reduce((a, b) => a + b, 0);
+      const averagePrice = totalSales / totalProducts;
+      const totalCost = (costPerProduct * totalProducts) + deliveryCharges;
+      const profitOrLoss = totalSales - totalCost;
+      const profitPerProduct = profitOrLoss / totalProducts;
+
+      let status = 'Break Even';
