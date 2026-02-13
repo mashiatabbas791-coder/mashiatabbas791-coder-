@@ -1,86 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mashit – Product Price Calculator</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #f5f7fa; padding: 20px; }
-    .container { max-width: 700px; margin: auto; background: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    h1 { text-align: center; }
-    textarea, input, button { width: 100%; margin: 10px 0; padding: 10px; font-size: 16px; box-sizing: border-box; }
-    button { background: #111827; color: #fff; border: none; cursor: pointer; }
-    button:hover { background: #000; }
-    .result { margin-top: 20px; background: #f0fdf4; padding: 15px; border-radius: 6px; border: 1px solid #166534; color: #14532d; }
-    .warning { background: #fee2e2; padding: 10px; margin-top: 10px; border-radius: 6px; border: 1px solid #991b1b; color: #7f1d1d; }
-  </style>
-</head>
-<body>
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
 
-  <div class="container">
-    <h1>Mashit – Product Price Calculator</h1>
-    
-    <label>Enter product prices (USD) – one per line:</label>
-    <textarea id="prices" rows="5" placeholder="10&#10;15&#10;20"></textarea>
 
-    <label>Cost per product (USD):</label>
-    <input type="number" id="cost" placeholder="5" />
-
-    <label>Total delivery charges (USD):</label>
-    <input type="number" id="delivery" placeholder="10" />
-
-    <button onclick="calculate()">Calculate</button>
-
-    <div id="output" style="display:none;"></div>
-  </div>
-
-  <script>
-    function calculate() {
-      const priceLines = document.getElementById('prices').value.trim().split('\n');
-      const costPerProduct = parseFloat(document.getElementById('cost').value);
-      const deliveryCharges = parseFloat(document.getElementById('delivery').value);
-
-      if (!priceLines[0] || priceLines[0] === "" || isNaN(costPerProduct) || isNaN(deliveryCharges)) {
-        alert('Please fill all fields correctly');
-        return;
-      }
-
-      const prices = priceLines.map(p => parseFloat(p)).filter(p => !isNaN(p));
-      const totalProducts = prices.length;
-      
-      if (totalProducts === 0) {
-          alert('Please enter at least one valid price.');
-          return;
-      }
-
-      const totalSales = prices.reduce((a, b) => a + b, 0);
-      const totalCost = (costPerProduct * totalProducts) + deliveryCharges;
-      const profitOrLoss = totalSales - totalCost;
-      const profitPerProduct = profitOrLoss / totalProducts;
-
-      let status = 'Break Even';
-      let resultClass = 'result';
-
-      if (profitOrLoss > 0) {
-        status = 'Profit 🟢';
-        resultClass = 'result';
-      } else if (profitOrLoss < 0) {
-        status = 'Loss 🔴';
-        resultClass = 'warning';
-      }
-
-      const outputDiv = document.getElementById('output');
-      outputDiv.className = resultClass;
-      outputDiv.innerHTML = `
-        <strong>Total Products:</strong> ${totalProducts}<br>
-        <strong>Total Sales:</strong> $${totalSales.toFixed(2)}<br>
-        <strong>Total Cost:</strong> $${totalCost.toFixed(2)}<br>
-        <hr>
-        <strong>Net Profit/Loss:</strong> $${profitOrLoss.toFixed(2)} (${status})<br>
-        <strong>Profit per Product:</strong> $${profitPerProduct.toFixed(2)}
-      `;
-      outputDiv.style.display = 'block';
-    }
-  </script>
-</body>
-</html>
+  ttq.load('D67N3J3C77U42FK01HM0');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
